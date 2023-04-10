@@ -7,6 +7,7 @@ public class Webhook {
     }
 
     public static double divide(int a, int b) {
+        //divided two integers and return double value
         return (double) a / b;
     }
 }
