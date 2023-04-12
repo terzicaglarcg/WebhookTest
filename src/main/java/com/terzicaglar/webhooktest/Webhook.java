@@ -127,4 +127,46 @@ public class Webhook {
         return C;
     }
 
+    public static int[][] divideAndConquerMM(int[][] A, int[][] B, int n) {
+        int[][] C = new int[n][n];
+
+        if (n == 1) {
+            C[0][0] = A[0][0] * B[0][0];
+            return C;
+        } else {
+            int[][] A11 = new int[n / 2][n / 2];
+            int[][] A12 = new int[n / 2][n / 2];
+            int[][] A21 = new int[n / 2][n / 2];
+            int[][] A22 = new int[n / 2][n / 2];
+            int[][] B11 = new int[n / 2][n / 2];
+            int[][] B12 = new int[n / 2][n / 2];
+            int[][] B21 = new int[n / 2][n / 2];
+            int[][] B22 = new int[n / 2][n / 2];
+
+            deconstructMatrix(A, A11, 0, 0);
+            deconstructMatrix(A, A12, 0, n / 2);
+            deconstructMatrix(A, A21, n / 2, 0);
+            deconstructMatrix(A, A22, n / 2, n / 2);
+            deconstructMatrix(B, B11, 0, 0);
+            deconstructMatrix(B, B12, 0, n / 2);
+            deconstructMatrix(B, B21, n / 2, 0);
+            deconstructMatrix(B, B22, n / 2, n / 2);
+
+            int[][] C11 = addMatrix(divideAndConquerMM(A11, B11, n / 2),
+                    divideAndConquerMM(A12, B21, n / 2), n / 2);
+            int[][] C12 = addMatrix(divideAndConquerMM(A11, B12, n / 2),
+                    divideAndConquerMM(A12, B22, n / 2), n / 2);
+            int[][] C21 = addMatrix(divideAndConquerMM(A21, B11, n / 2),
+                    divideAndConquerMM(A22, B21, n / 2), n / 2);
+            int[][] C22 = addMatrix(divideAndConquerMM(A21, B12, n / 2),
+                    divideAndConquerMM(A22, B22, n / 2), n / 2);
+
+            constructMatrix(C11, C, 0, 0);
+            constructMatrix(C12, C, 0, n / 2);
+            constructMatrix(C21, C, n / 2, 0);
+            constructMatrix(C22, C, n / 2, n / 2);
+        }
+
+        return C;
+    }
 }
