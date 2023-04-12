@@ -75,4 +75,56 @@ public class Webhook {
         }
         return C;
     }
+
+    /**
+     * Creates a new matrix based off of part of another matrix
+     *
+     * @param initialMatrix
+     *            the initial matrix
+     * @param newMatrix
+     *            the new matrix created from the initial matrix
+     * @param a
+     *            the initial row position of initialMatrix used when creating
+     *            newMatrix
+     * @param b
+     *            the initial column position of initialMatrix used when
+     *            creating newMatrix
+     */
+    private static void constructMatrix(int[][] initialMatrix,
+                                        int[][] newMatrix, int a, int b) {
+
+        int y = b;
+
+        for (int i = 0; i < initialMatrix.length; i++) {
+            for (int j = 0; j < initialMatrix.length; j++) {
+                newMatrix[a][y++] = initialMatrix[i][j];
+            }
+            y = b;
+            a++;
+        }
+    }
+
+    /**
+     * Adds two matrices together
+     *
+     * @param A
+     *            One matrix to be added
+     * @param B
+     *            Another matrix to be added
+     * @param n
+     *            the size of the matrix
+     * @return a new array C which is the result of the matrix addition
+     */
+    private static int[][] addMatrix(int[][] A, int[][] B, int n) {
+
+        int[][] C = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                C[i][j] = A[i][j] + B[i][j];
+            }
+        }
+        return C;
+    }
+
 }
