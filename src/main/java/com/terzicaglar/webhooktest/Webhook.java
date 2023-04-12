@@ -29,4 +29,31 @@ public class Webhook {
         }
         return matrix;
     }
+
+
+    private static int[][] subtractMatrix(int[][] A, int[][] B, int n) {
+
+        int[][] C = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                C[i][j] = A[i][j] - B[i][j];
+            }
+        }
+        return C;
+    }
+
+
+    private static void deconstructMatrix(int[][] initialMatrix,
+                                          int[][] newMatrix, int a, int b) {
+
+        int y = b;
+        for (int i = 0; i < newMatrix.length; i++) {
+            for (int j = 0; j < newMatrix.length; j++) {
+                newMatrix[i][j] = initialMatrix[a][y++];
+            }
+            y = b;
+            a++;
+        }
+    }
 }
