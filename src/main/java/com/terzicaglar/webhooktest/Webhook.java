@@ -56,6 +56,22 @@ public class Webhook {
             a++;
         }
     }
+    public static boolean method1(String str)
+    {
+
+        String rev = "";
+
+        boolean ans = false;
+
+        for (int i = str.length() - 1; i >= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+
+        if (str.equals(rev)) {
+            ans = true;
+        }
+        return ans;
+    }
 
     public static int[][] classicMM(int[][] A, int[][] B, int n) {
         int[][] C = new int[n][n];
