@@ -169,4 +169,12 @@ public class Webhook {
 
         return C;
     }
+
+    public static String myMethod(String s) {
+        String returnedString = "";
+        for (int i = 0; i < s.length(); i++) {
+            returnedString += s.charAt(s.length() - 1 - i);
+        }
+        return returnedString;
+    }
 }
